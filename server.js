@@ -21,16 +21,18 @@ mongoose.connect(dbConfig.url, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 }).then(() => {
-    console.log("Successfully connected to the database");    
+    console.log("Conectado a la base de datos.");    
 }).catch(err => {
-    console.log('Could not connect to the database. Exiting now...', err);
+    console.log('No se pudo conectar a la base de datos.', err);
     process.exit();
 });
 
 // define a simple route
 app.get('/', (req, res) => {
-    res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
+    res.json({"message": "Desafío Ripley Backend"});
 });
+
+require('./app/routes/product.routes.js')(app);
 
 // listen for requests
 app.listen(3000, () => {
