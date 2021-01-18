@@ -52,8 +52,27 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single note with a noteId
-exports.findOne = (req, res) => {};
+// Find a single product
+exports.findOne = (req, res) => {
+    Product.findById(req.params.id)
+    .then(product => {
+        if(!product) {
+            return res.status(404).send({
+                message: "No se encuentra producto con el id " + req.params.id
+            });            
+        }
+        res.send(product);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "No se encuentra producto con el id " + req.params.id
+            });                
+        }
+        return res.status(500).send({
+            message: "Error obteniendo producto id " + req.params.id
+        });
+    });
+};
 
 // Update a note identified by the noteId in the request
 exports.update = (req, res) => {
