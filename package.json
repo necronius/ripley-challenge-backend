@@ -15,5 +15,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "worker": "node index.js", 
+  "start": "node index.js", 
+  "test": "node test.js"
 }
