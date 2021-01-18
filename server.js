@@ -19,7 +19,7 @@ mongoose.Promise = global.Promise;
 // Connecting to the database
 mongoose.connect(dbConfig.url, {
     useUnifiedTopology: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
 }).then(() => {
     console.log("Conectado a la base de datos.");    
 }).catch(err => {
@@ -37,5 +37,5 @@ require('./app/routes/product.routes.js')(app);
 // listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
+    console.log(`API iniciada en puerto ${ PORT }`);
 });
