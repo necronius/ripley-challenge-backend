@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // create express app
 const app = express();
@@ -9,6 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
+
+// Cors
+app.use(cors());
 
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
@@ -35,7 +39,7 @@ app.get('/', (req, res) => {
 require('./app/routes/product.routes.js')(app);
 
 // listen for requests
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     console.log(`API iniciada en puerto ${ PORT }`);
 });
